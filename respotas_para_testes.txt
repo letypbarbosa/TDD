@@ -1,0 +1,30 @@
+Respostas das equações
+
+
+a) x^2 -4x +3 = 0
+A = 4
+xI = 3
+xII = 1
+
+b) 2x^2 -4x +2 = 0
+A = 0
+xI = 1
+xII = 1
+
+c) -x² +x +2 = 0
+A = 9
+xI = -1
+xII = 2
+
+d) x² -2x = 0
+A = 0
+xI = 1
+xII = 1
+
+e) 3x² -27 = 0
+
+
+f) 2x² -5x + 4 = 0
+A = -7
+Não possue raízes reais
+
