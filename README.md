@@ -13,6 +13,9 @@ O desafio era implementar uma classe pelo paradgima do TDD
 que resolvesse a equação de segundo grau.
 
 Cada participante criou a sua classe e seus testes.
+
+Depois comparamos o s resultados obtidos.
+
 O resultado voê confere na pasta
 
     TDD/equacao
