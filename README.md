@@ -1,4 +1,0 @@
-TDD
-===
-
-Estudos de TDD.
