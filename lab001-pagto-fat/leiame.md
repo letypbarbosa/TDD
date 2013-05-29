@@ -3,21 +3,21 @@ lab001
 
 *Lab retirada do livro "TDD na prática - Camilo Lopes*
 
-O objetivo deete Lab é saber quando uma determinada fatura foi paga: antes, no dia ou após o vencimento.
+O objetivo deste Lab é saber quando uma determinada fatura foi paga:
+antes, no dia ou após o vencimento.
 
 
 Contexto
 --------
 
-
-Data uma data de vencimento e uma data de pagamento, informar se o pagamneto foi feito em dia ou se foi feito com
-atraso, se positivo, quantos dias?
+Dada uma data de vencimento e uma data de pagamento, informar se o pagamento foi
+feito em dia ou se foi feito com atraso, se positivo, quantos dias?
 
 
 Instruções
 ----------
 
-Os testes ja foram criados, veja arquivo "teste.java".
+Os testes ja foram criados, veja arquivo "flavio/fatura-test.js".
 
 
 Objetivo I
@@ -25,7 +25,7 @@ Objetivo I
 
 Criar o código para fazer com os testes passem (fiquem verdes).
 
-Não pode altara o teste.
+*Não pode alterar o teste.*
 
 
 
