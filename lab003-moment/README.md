@@ -21,17 +21,17 @@ Entender o que a biblioteca faz.
 
 Rodar os testes da biblioteca na web:
 
-* 2.1. Quantos passaram?
-* 2.2. Quantos não passaram?
-* 2.3. Quantos testes foram executados?
+* Quantos passaram?
+* Quantos não passaram?
+* Quantos testes foram executados?
 
 
 ### Objetivo 3
 
 Aprender com código de terceiro:
 
-* 3.1 Escolher uma funcionalidade da biblio.
-* 3.2 localizar o código de teste no github:</br >
+* Escolher uma funcionalidade da biblio.
+* localizar o código de teste no github:</br >
     https://github.com/timrwood/moment/
 
-* 3.3 Escrever comentários sobre o teste.
+* Escrever comentários sobre o teste.
