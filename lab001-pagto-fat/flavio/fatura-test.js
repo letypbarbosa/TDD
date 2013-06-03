@@ -24,6 +24,6 @@ test("pgtoEmUmDiaAtrasado", function() {
     dt_vencto = "27/12/2010";
     dt_pagto  = "28/12/2010";
     resp = fatura.verificaPagto(dt_vencto, dt_pagto);
-    equal("Pagto feito coma atraso do 1 dia", resp, "pagto realizado com atraso de um dia");
+    equal("Pagto feito com atraso de 1 dia", resp, "pagto realizado com atraso de um dia");
 
 });

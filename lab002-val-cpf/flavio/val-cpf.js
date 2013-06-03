@@ -1,65 +1,123 @@
-// Referencias:
-//http://www.devmedia.com.br/validar-cpf-com-javascript/23916
-//http://www.gerardocumentos.com.br/?pg=funcao-javascript-para-validar-cpf    
-var validarCPF = function() {
-    var me = this,
-            CPF,
-            validacaoInvalida = false,
-            digitosIguais = 1,
-            numeros,
-            digitos,
-            i,
-            soma = 0,
-            resultado;
+var cpf = {
+    doc: "",
+    digt1: {
+        num: "",
+        resto: "",
+        soma: "",
+        mult_somar_cpf: function() {
 
+            var cpf_arr = cpf.doc.split("");
 
-    // Codifica o valor do CPF para ser apenas um valor numérico
-    CPF = me.txtCPFtemp.val().replace(/[^\d]+/g, '');
-
-    // Verifica se o tamanho do CPF contém mais que 11 caracteres 
-    if (CPF.length != 11) {
-        validacaoInvalida = true;
-    }
-
-    // Verifica se a sequência de digitos são identicos 
-    for (i = 0; i < CPF.length - 2; i++) {
-        if (CPF.charAt(i) != CPF.charAt(i + 1)) {
-            digitosIguais = 0;
-            break;
+            this.soma = 0;
+            this.soma += cpf_arr[0] * 10;
+            this.soma += cpf_arr[1] * 9;
+            this.soma += cpf_arr[2] * 8;
+            this.soma += cpf_arr[3] * 7;
+            this.soma += cpf_arr[4] * 6;
+            this.soma += cpf_arr[5] * 5;
+            this.soma += cpf_arr[6] * 4;
+            this.soma += cpf_arr[7] * 3;
+            this.soma += cpf_arr[8] * 2;
         }
-    }
+    },
+    digt2: {
+        num: "",
+        resto: "",
+        soma: "",
+        mult_somar_cpf: function() {
 
-    // Se digitos forem iguais o CPF é Invalido
-    if (digitosIguais) {
-        validacaoInvalida = true;
-    }
+            var cpf_arr = cpf.doc.split("");
 
+            this.soma = 0;
+            this.soma += cpf_arr[0] * 11;
+            this.soma += cpf_arr[1] * 10;
+            this.soma += cpf_arr[2] * 9;
+            this.soma += cpf_arr[3] * 8;
+            this.soma += cpf_arr[4] * 7;
+            this.soma += cpf_arr[5] * 6;
+            this.soma += cpf_arr[6] * 5;
+            this.soma += cpf_arr[7] * 4;
+            this.soma += cpf_arr[8] * 3;
+            this.soma += cpf_arr[9] * 2;
+        }
+    },
+    validar: function() {
+        "use strict";
 
-    // Verificação do primeiro digito do cpf - Cal. ver a documentação
-    numeros = CPF.substring(0, 9);
-    digitos = CPF.substring(9);
+        if (!this.doc) {
+            return false;
+        }
 
-    for (i = 10; i > 1; i--) {
-        soma += numeros.charAt(10 - i) * i;
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    }
+        this.extrair_apenas_numeros();
+        this.extrair_digitos();
 
-    if (resultado != digitos.charAt(0)) {
-        validacaoInvalida = true;
-    }
+        if (this.doc.length !== 11) {
+            return false;
+        }
 
-    // Verificação do segundo digito do cpf - Cal. ver a documentação
-    numeros = CPF.substring(0, 10);
-    soma = 0
+        if (this.validar_sequencia_identica()) {
+            return false;
+        }
 
-    for (i = 11; i > 1; i--) {
-        soma += numeros.charAt(11 - i) * i;
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    }
+        this.digt1.mult_somar_cpf();
+        this.digt1.resto = this.calc_resto(this.digt1.soma);
+        if (!cpf.validar_digito(this.digt1.resto, this.digt1.num)) {
+            return false;
+        }
 
-    if (resultado != digitos.charAt(1)) {
-        validacaoInvalida = true;
-    }
-    if (!validacaoInvalida)
+        this.digt2.mult_somar_cpf();
+        this.digt2.resto = this.calc_resto(this.digt2.soma);
+        if (!cpf.validar_digito(this.digt2.resto, this.digt2.num)) {
+            return false;
+        }
+
         return true;
-}
+    },
+    extrair_apenas_numeros: function() {
+        this.doc = this.doc.replace(/[^\d]+/g, '');
+    },
+    extrair_digitos: function() {
+        var cpf_arr = this.doc.split("");
+        this.digt1.num = parseInt(cpf_arr[9]);
+        this.digt2.num = parseInt(cpf_arr[10]);
+    },
+    calc_resto: function(soma) {
+        var resto = (soma * 10) % 11;
+
+        if ((resto === 10) || (resto === 11)) {
+            resto = 0;
+        }
+
+        return resto;
+    },
+    validar_digito: function(resto, digito) {
+        if (resto === digito) {
+            return true;
+        }
+    },
+    validar_sequencia_identica: function() {
+        switch (this.doc) {
+        case "00000000000":
+            return false;
+        case "11111111111":
+            return false;
+        case "22222222222":
+            return false;
+        case "33333333333":
+            return false;
+        case "44444444444":
+            return false;
+        case "55555555555":
+            return false;
+        case "66666666666":
+            return false;
+        case "77777777777":
+            return false;
+        case "88888888888":
+            return false;
+        case "99999999999":
+            return false;
+        }
+        return true;
+    }
+};
