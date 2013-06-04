@@ -1,6 +1,13 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+situacaoPagamento = {
+    statusData: function(){
+    },
+    
+    CalcularData: function( dtPagamento, dtVencimento){
 
-
+        var dataPagamento = dtPagamento.replace('/', '' );
+        
+    }
+            
+            
+    
+};
