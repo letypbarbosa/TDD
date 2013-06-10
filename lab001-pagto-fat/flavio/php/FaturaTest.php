@@ -25,7 +25,7 @@ class FaturaTest extends PHPUnit_Framework_Testcase {
         $dt_vencto = "01/11/2010";
         $dt_pagto = "01/11/2010";
         $resp = $fatura->verificaPagto($dt_vencto, $dt_pagto);
-        $this->assertEquals("pagto deve ter sido feito em dia", $resp);
+        $this->assertEquals("Pagto deve ter sido feito em dia", $resp);
     }
     function testEmUmDiaAtrasad() {
 
