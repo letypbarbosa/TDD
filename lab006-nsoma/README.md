@@ -1,12 +1,12 @@
 lab006
 ------
 
-Faça um algoritmo que carregue um vetor com 30 números inteiros e um segundo vetor com 20 números inteiros.
+Faça um algoritmo que leia um valor N, inteiro e positivo, calcule e mostre a seguinte soma:
 
-Calcule e mostre 3 novos vetores resultantes.
+n + 1
+______
 
-O primeiro vetor resultante será composto pelos números pares do primeiro vetor lido.
+n2
 
-O segundo vetor resultante será composto por todos os números ímpares do segundo vetor lido e
+![fig da soma](https://raw.github.com/flaviomicheletti/TDD/lab006/lab006-nsoma/nsoma.png "soma")
 
-o terceiro vetor resultante será composto por todos os números primos dos dois vetores lidos.
