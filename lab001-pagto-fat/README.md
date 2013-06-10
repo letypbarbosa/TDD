@@ -34,3 +34,8 @@ Objetivo II
 
 Refatorar e salvar em arquivo separado, ou seja, mantenha o original.
 
+
+Objetivo II
+-----------
+
+Repetir os objetivos I e II em php.
