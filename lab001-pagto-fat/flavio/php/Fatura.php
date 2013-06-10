@@ -2,9 +2,10 @@
 
 class Fatura {
 
-    
-    
-    
+    function verificaPagto() {
+        
+    }
+
 }
 
 ?>
