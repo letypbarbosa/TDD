@@ -1,21 +1,28 @@
-lab007
+lab008
 ======
 
 *Lab retirada do livro "TDD na prática - Camilo Lopes*
+pag 86
 
-O objetivo deste Lab é saber o prazo de entrega a partir da informação da origem e destino.
+Esta lab é um complemento da lab anterior, veja o método
+prazoDestino();
+
 
 
 Contexto
 --------
 
-O usuário informa o estado de origigem e o destino.
+Precisamos conferir o valor total de uma cesta de compras e
+
+caso o frete seja para fora dos estado acrescentar 5% (0.05)
+ao valor total.
+
 
 
 Instruções
 ----------
 
-Os testes ja foram criados, veja arquivo "flavio/PrazoTest.php".
+Os testes ja foram criados, veja arquivo "flavio/ProdutoTest.php".
 
 
 
