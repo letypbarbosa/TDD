@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for </title>
+  <title>Dashboard for /usr/share/pear/PHPUnit/Framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -17,7 +17,12 @@
     <div class="row">
      <div class="span12">
       <ul class="breadcrumb">
-        <li><a href="index.html"></a></li>
+        <li><a href="index.html"></a> <span class="divider">/</span></li>
+        <li><a href="usr.html">usr</a> <span class="divider">/</span></li>
+        <li><a href="usr_share.html">share</a> <span class="divider">/</span></li>
+        <li><a href="usr_share_pear.html">pear</a> <span class="divider">/</span></li>
+        <li><a href="usr_share_pear_PHPUnit.html">PHPUnit</a> <span class="divider">/</span></li>
+        <li><a href="usr_share_pear_PHPUnit_Framework.html">Framework</a></li>
         <li class="active">(Dashboard)</li>
 
       </ul>
@@ -81,7 +86,7 @@ $(document).ready(function() {
    labels: {style: {fontSize: '8px'}},
   },
   series: [{
-   data: [0,0,0,0,0,0,0,0,0,0,0,1]
+   data: [0,0,0,0,0,0,0,0,0,0,0,0]
   }],
  });
 
@@ -107,7 +112,7 @@ $(document).ready(function() {
    }
   },
   series: [{
-   data: [[100,2,"<a href=\"var_www_html_tdd_TDD_lab007-regra-de-tres_User.class.php.html#6\">User<\/a>"]],
+   data: [],
    marker: {
     symbol: 'diamond'
    }
