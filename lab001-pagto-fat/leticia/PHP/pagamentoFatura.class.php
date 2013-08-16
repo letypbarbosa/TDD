@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Class PagamentoFatura
+ */
 class PagamentoFatura {
 
     public $dataVencimento;
