@@ -2,28 +2,71 @@
 
 class Fatura {
 
-    function verificaPagto($dt_vencto, $dt_pagto) {
-        // baseado em
-        // http://stackoverflow.com/questions/1940338/date-difference-in-php-on-days
-        // http://www.netevida.com/trabalho-negocios/webdesign/converter-formatos-de-data-em-php-serie-funcoes-uteis-php/
-
-
-        $dStart = new DateTime($this->converte_datas($dt_vencto), new DateTimeZone('America/Sao_Paulo'));
-        $dEnd = new DateTime($this->converte_datas($dt_pagto), new DateTimeZone('America/Sao_Paulo'));
-        $dDiff = $dStart->diff($dEnd);
-
-        return $dDiff->days;
+    private $dt_vencimento;
+    private $dt_pagamento;
+    
+    private $valorMulta = 0;
+    private $diasAtraso = 0;
+    
+    
+    function __construct($dt_venc, $dt_pgto){
+        
+        $this->dt_vencimento = $dt_venc;
+        $this->dt_pagamento  = $dt_pgto;                
     }
+    
+    
+    function checarAtraso() {
 
-    function converte_datas($dt) {
+        $dt_venc = $this->converte_datas($this->dt_vencimento);
+        $dt_pgto = $this->converte_datas($this->dt_pagamento);
+
+        $locale = new DateTimeZone('America/Sao_Paulo');
+        
+        $start = new DateTime($dt_venc, $locale);
+        $end   = new DateTime($dt_pgto, $locale);
+        
+        $diff = $start->diff($end);
+        $this->diasAtraso = $diff->days;
+
+        
+        if ($diff->days){            
+            $this->calcularMulta($diff->days);
+    
+            return true;
+        }
+        
+        return false;
+        
+    }
+        
+    private function calcularMulta($dias){
+
+        if ($dias == 1) {
+            $this->valorMulta = 11;
+        }
+        if ($dias <= 30) {
+            $this->valorMulta = $dias * 0.5 + 11;
+        }
+        if ($dias > 30) {
+            $this->valorMulta = (30 * 0.5 + 11) + $dias * 1.5;
+        }
+            
+    }            
+    
+    function getDiasAtraso(){
+        return $this->diasAtraso;
+    }
+    
+    function getValorMulta(){
+        return $this->valorMulta;
+    }
+    
+    private function converte_datas($dt) {
         $dt = explode('/', $dt);
         $dt = $dt[2] . '-' . $dt[1] . '-' . $dt[0];
 
         return $dt;
     }
-
 }
-
-//$fatura = new Fatura();
-//echo $fatura->verificaPagto("08/09/2013", "05/09/2013");
 ?>
