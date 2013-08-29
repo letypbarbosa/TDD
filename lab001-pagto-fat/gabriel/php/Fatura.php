@@ -11,21 +11,8 @@ class Fatura {
         $dStart = new DateTime($this->converte_datas($dt_vencto), new DateTimeZone('America/Sao_Paulo'));
         $dEnd = new DateTime($this->converte_datas($dt_pagto), new DateTimeZone('America/Sao_Paulo'));
         $dDiff = $dStart->diff($dEnd);
-        
-        switch ($dDiff->days) {
-            case 1:
-                return "Pagto feito com atraso de 1 dia";
-                break;
-            case 5:
-                return "Pagto feito com atraso de 5 dias";
-                break;
-            case 30:
-                return "Pagto feito com atraso de 30 dias";
-                break;
-            default:
-                return "Pagto deve ter sido feito em dia";
-                break;
-        }
+
+        return $dDiff->days;
     }
 
     function converte_datas($dt) {
@@ -37,4 +24,6 @@ class Fatura {
 
 }
 
+//$fatura = new Fatura();
+//echo $fatura->verificaPagto("08/09/2013", "05/09/2013");
 ?>
