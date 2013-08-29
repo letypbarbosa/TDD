@@ -5,9 +5,8 @@
  */
 class RegraDeTres {
     
-    private $valor;       # valor total
-    private $percentual;  # percentual desejado
-    private $resultado;   # resultado esperado
+    private $valor;       # valor do todo (ex: 200 caixas)
+    private $percentual;  # percentual desejado (ex: 20% de 200 caixas)
     
     
     /**
@@ -44,7 +43,7 @@ class RegraDeTres {
 
 //Implementação
 //$object = new RegraDeTres();
-//$object->setValor(30);
+//$object->setValor(200);
 //$object->setPercentual(20);
 //
 //echo $object->getResultado();
