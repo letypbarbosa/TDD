@@ -20,7 +20,7 @@ class Fatura {
      * 
      * @return boolean
      */
-    function checarAtraso() {
+    function estaEmAtraso() {
 
         $dt_venc = explode("/", $this->dt_vencimento);
         $dt_pgto = explode("/", $this->dt_pagamento);
@@ -68,6 +68,6 @@ class Fatura {
 }
 
 //$fatura = new Fatura("08/09/2013", "05/09/2013");
-//$fatura->checarAtraso();
+//$fatura->estaEmAtraso();
 //$fatura->calcularMulta();
 ?>
