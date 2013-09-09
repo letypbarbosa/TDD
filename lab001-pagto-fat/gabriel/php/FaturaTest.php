@@ -16,8 +16,9 @@ class FaturaTest extends PHPUnit_Framework_TestCase{
         $fatura = new Fatura($dt_vencto, $dt_pagto);
         
         $this->AssertTRUE(true, $fatura->checarAtraso());
+        $this->AssertTRUE(true, $fatura->calcularMulta());
+        $this->AssertEquals(12, $fatura->getValorMulta());
         $this->AssertEquals(2, $fatura->getDiasAtraso());
-        $this->AssertNotEquals(0, $fatura->getValorMulta());
     }
     
     public function testPgtoEmDia(){
@@ -25,10 +26,12 @@ class FaturaTest extends PHPUnit_Framework_TestCase{
         $dt_vencto = "08/09/2013";
         $dt_pagto = "05/09/2013";
         
-        $fatura = new Fatura();
-        $diasDeAtraso = $fatura->verificaPagto($dt_vencto, $dt_pagto);
+        $fatura = new Fatura($dt_vencto, $dt_pagto);
         
-        $this->AssertEquals(0, $diasDeAtraso);
+        $this->AssertFALSE(false, $fatura->checarAtraso());
+        $this->AssertFALSE(false, $fatura->calcularMulta());
+        $this->AssertEquals(0, $fatura->getValorMulta());
+        $this->AssertEquals(0, $fatura->getDiasAtraso());
     }
 
 

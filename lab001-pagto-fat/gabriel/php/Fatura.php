@@ -16,23 +16,21 @@ class Fatura {
     }
     
     
+    /**
+     * 
+     * @return boolean
+     */
     function checarAtraso() {
 
-        $dt_venc = $this->converte_datas($this->dt_vencimento);
-        $dt_pgto = $this->converte_datas($this->dt_pagamento);
-
-        $locale = new DateTimeZone('America/Sao_Paulo');
+        $dt_venc = explode("/", $this->dt_vencimento);
+        $dt_pgto = explode("/", $this->dt_pagamento);
         
-        $start = new DateTime($dt_venc, $locale);
-        $end   = new DateTime($dt_pgto, $locale);
-        
-        $diff = $start->diff($end);
-        $this->diasAtraso = $diff->days;
+        $total_venc = $dt_venc[0]+$dt_venc[1]+$dt_venc[2];
+        $total_pgto = $dt_pgto[0]+$dt_pgto[1]+$dt_pgto[2];
 
         
-        if ($diff->days){            
-            $this->calcularMulta($diff->days);
-    
+        if ($total_pgto > $total_venc){
+            $this->diasAtraso = $total_pgto - $total_venc;
             return true;
         }
         
@@ -40,18 +38,24 @@ class Fatura {
         
     }
         
-    private function calcularMulta($dias){
+    /**
+     * 
+     */
+    public function calcularMulta(){
 
-        if ($dias == 1) {
+        if (!$this->diasAtraso) {
+            return false;
+        }
+        elseif ($this->diasAtraso == 1) {
             $this->valorMulta = 11;
         }
-        if ($dias <= 30) {
-            $this->valorMulta = $dias * 0.5 + 11;
+        elseif ($this->diasAtraso <= 30) {
+            $this->valorMulta = $this->diasAtraso * 0.5 + 11;
         }
-        if ($dias > 30) {
-            $this->valorMulta = (30 * 0.5 + 11) + $dias * 1.5;
+        elseif ($this->diasAtraso > 30) {
+            $this->valorMulta = (30 * 0.5 + 11) + $this->diasAtraso * 1.5;
         }
-            
+        return true;
     }            
     
     function getDiasAtraso(){
@@ -61,12 +65,9 @@ class Fatura {
     function getValorMulta(){
         return $this->valorMulta;
     }
-    
-    private function converte_datas($dt) {
-        $dt = explode('/', $dt);
-        $dt = $dt[2] . '-' . $dt[1] . '-' . $dt[0];
-
-        return $dt;
-    }
 }
+
+//$fatura = new Fatura("08/09/2013", "05/09/2013");
+//$fatura->checarAtraso();
+//$fatura->calcularMulta();
 ?>
