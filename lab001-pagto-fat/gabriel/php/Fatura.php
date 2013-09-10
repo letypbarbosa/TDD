@@ -25,15 +25,17 @@ class Fatura {
         $dt_venc = explode("/", $this->dt_vencimento);
         $dt_pgto = explode("/", $this->dt_pagamento);
         
-        $total_venc = $dt_venc[0]+$dt_venc[1]+$dt_venc[2];
-        $total_pgto = $dt_pgto[0]+$dt_pgto[1]+$dt_pgto[2];
+        date_default_timezone_set('America/Sao_Paulo');
+        $date_venc = mktime(0, 0, 0, $dt_venc[1], $dt_venc[0], $dt_venc[2]);
+        $date_pgto = mktime(0, 0, 0, $dt_pgto[1], $dt_pgto[0], $dt_pgto[2]);
 
-        
+        $total_venc = ((($date_venc/60)/60)/24); //em dias
+        $total_pgto = ((($date_pgto/60)/60)/24); //em dias
+
         if ($total_pgto > $total_venc){
             $this->diasAtraso = $total_pgto - $total_venc;
             return true;
         }
-        
         return false;
         
     }
@@ -67,7 +69,7 @@ class Fatura {
     }
 }
 
-//$fatura = new Fatura("08/09/2013", "05/09/2013");
-//$fatura->estaEmAtraso();
-//$fatura->calcularMulta();
+$fatura = new Fatura("08/09/2013", "10/09/2013");
+$fatura->estaEmAtraso();
+$fatura->calcularMulta();
 ?>
